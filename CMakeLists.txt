@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.2)
 
 set(PROJECT_NAME shadowsocks-libev)
-set(RELEASE_DATE 2017-6-27)
-set(PROJECT_VERSION "3.0.7")
+set(RELEASE_DATE 2017-11-20)
+set(PROJECT_VERSION "3.1.1")
 set(PROJECT_DESC "a lightweight secured socks5 proxy")
 set(PROJECT_URL "https://shadowsocks.org")
 set(PROJECT_ISSUES_URL "https://github.com/shadowsocks/shadowsocks-libev")
@@ -36,7 +36,8 @@ option(WITH_STATIC "build with static libraries." ON)
 
 # Run platform tests
 include(${CMAKE_SOURCE_DIR}/cmake/configure.cmake)
-configure_file(${CMAKE_SOURCE_DIR}/cmake/config.h.cmake ${CMAKE_SOURCE_DIR}/src/config.h)
+configure_file(${CMAKE_SOURCE_DIR}/cmake/config.h.cmake ${CMAKE_BINARY_DIR}/src/config.h)
+add_definitions(-I$(CMAKE_BINARY_DIR)/src)
 add_definitions(-DHAVE_CONFIG_H)
 
 # pkg-config
